@@ -1,0 +1,32 @@
+{
+  "name": "serverless-export-outputs",
+  "version": "1.0.0",
+  "description": "A Serverless plugin for exporting AWS stack outputs to a file.",
+  "author": {
+    "name": "Amir Honarpour",
+    "email": "amir@honarpour.com",
+    "url": "https://honarpour.com/code"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/honarpour/serverless-export-outputs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "serverless",
+    "sls",
+    "plugin",
+    "deploy",
+    "export",
+    "outputs",
+    "react app",
+    "env"
+  ],
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "tomlify-j0.4": "^3.0.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {}
+}
