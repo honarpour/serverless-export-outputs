@@ -52,7 +52,7 @@ By default, this plugin exports all stack outputs to a `.env` file in the root o
          - OutputKeyName
          - AnotherOutputKeyName
          - CustomOutput: value # add custom key/value to exports
-       handler: scripts/env.handler # script to process outputs
+       handler: scripts/env.js # script to process outputs
        output:
          file: ./.env # file path and name relative to root
          format: toml # toml, yaml/yml, json
@@ -66,7 +66,7 @@ By default, this plugin exports all stack outputs to a `.env` file in the root o
      return outputs;
    }
 
-   module.exports = { handler };
+   module.exports = handler;
    ```
 
    The handler above overrides/removes prefixing for Create React App.

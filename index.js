@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const tomlify = require('tomlify-j0.4');
 const yamljs = require('yamljs');
 
@@ -92,7 +93,12 @@ class ServerlessExportOutputs {
 
   processOutputs(outputs) {
     if (this.config && this.config.handler) {
-      return this.config.handler(outputs, this.serverless, this.options);
+      const handlerPath = path.resolve(
+        __dirname,
+        `../../${this.config.handler}`,
+      );
+      const handler = require(handlerPath);
+      return handler(outputs, this.serverless, this.options);
     }
     return defaultHandler(outputs);
   }
