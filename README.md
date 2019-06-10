@@ -2,7 +2,7 @@
 
 > A Serverless plugin for exporting AWS stack outputs to a file.
 
-By default, this plugin exports all stack outputs to a `.env` file in the root of the project, and formats all keys as `OutputKeyName → REACT_APP_OUTPUT_KEY_NAME`, which allows Create React App to pick them up as `process.env` variables. You can override these in steps 3 and 4 of setup and use it for any other purpose.
+By default, this plugin exports all stack outputs to a `toml` formatted `.env` file in the root of the project. You can override these in step 4. You can also turn on Create React App prefixing in step 5.
 
 ## Setup
 
@@ -43,7 +43,7 @@ By default, this plugin exports all stack outputs to a `.env` file in the root o
        Value: Lorem ipsum
    ```
 
-4. Override defaults (optional):
+4. Override defaults:
 
    ```yaml
    custom:
@@ -69,4 +69,18 @@ By default, this plugin exports all stack outputs to a `.env` file in the root o
    module.exports = handler;
    ```
 
-   The handler above overrides/removes prefixing for Create React App.
+5. ReactApp prefixing:
+
+   Format all keys as `OutputKeyName → REACT_APP_OUTPUT_KEY_NAME` to have Create React App pick them up as `process.env` variables.
+
+   _Note: This will be ignored if a handler is provided like in step 4._
+
+   ```yaml
+   custom:
+     exportOutputs:
+       reactapp: true
+       include: # if not provided, all outputs are exported
+         - OutputKeyName
+         - AnotherOutputKeyName
+         - CustomOutput: value # add custom key/value to exports
+   ```

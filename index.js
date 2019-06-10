@@ -3,7 +3,6 @@ const path = require('path');
 const tomlify = require('tomlify-j0.4');
 const yamljs = require('yamljs');
 
-const defaultPrefix = 'REACT_APP_';
 const defaultFile = './.env';
 const defaultFormat = 'toml';
 
@@ -13,11 +12,11 @@ const camelToSnakeCase = string =>
     (letter, index) => `${index > 0 ? '_' : ''}${letter}`,
   );
 
-const defaultHandler = outputs => {
+const reactAppHandler = outputs => {
   const processedOutputs = {};
 
   Object.keys(outputs).forEach(key => {
-    const newKey = `${defaultPrefix}${camelToSnakeCase(key)}`.toUpperCase();
+    const newKey = `REACT_APP_${camelToSnakeCase(key)}`.toUpperCase();
     processedOutputs[newKey] = outputs[key];
   });
 
@@ -99,8 +98,11 @@ class ServerlessExportOutputs {
       );
       const handler = require(handlerPath);
       return handler(outputs, this.serverless, this.options);
+    } else if (this.config && this.config.reactapp === true) {
+      return reactAppHandler(outputs);
+    } else {
+      return outputs;
     }
-    return defaultHandler(outputs);
   }
 
   createFile(outputs) {
