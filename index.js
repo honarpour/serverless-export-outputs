@@ -46,9 +46,7 @@ class ServerlessExportOutputs {
       .request(
         'CloudFormation',
         'describeStacks',
-        { StackName: this.stackName },
-        this.stage,
-        this.region,
+        { StackName: this.stackName }
       )
       .then(response => {
         const stack = response.Stacks[0];
