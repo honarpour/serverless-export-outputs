@@ -80,7 +80,10 @@ class ServerlessExportOutputs {
     const targetPrefix =
       this.config && this.config.output && this.config.output.prefix
         ? this.config.output.prefix
-        : defaultFormat;
+        : "";
+    console.log(`targetPrefix: ${targetPrefix}`);
+    console.log(`prefix: ${this.config.output.prefix}`);
+    
     targetOutputKeys.forEach(entry => {
       let key = entry;
       let obj = outputs;
