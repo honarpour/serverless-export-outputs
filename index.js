@@ -85,7 +85,7 @@ class ServerlessExportOutputs {
     console.log(`prefix: ${this.config.output.prefix}`);
     
     targetOutputKeys.forEach(entry => {
-      let key = entry;
+      let key = targetPrefix + entry;
       let obj = outputs;
       if (isObject(entry)) {
         key = targetPrefix + Object.keys(entry)[0];
