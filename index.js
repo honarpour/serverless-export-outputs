@@ -114,7 +114,14 @@ class ServerlessExportOutputs {
       this.config && this.config.output && this.config.output.format
         ? this.config.output.format
         : defaultFormat;
+    const targetPrefix =
+      this.config && this.config.output && this.config.output.prefix
+        ? this.config.output.prefix
+        : defaultFormat;
     let formattedOutputs = null;
+    
+    outputs[key] = outputs[key].map(i => targetPrefix + i)
+    console.log("Output${outputs[key]});
 
     switch (targetFormat.toLowerCase()) {
       case 'toml':
