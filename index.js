@@ -76,12 +76,16 @@ class ServerlessExportOutputs {
       ? this.config
       : this.config.include || [];
     const targetOutputs = {};
-
+    
+    const targetPrefix =
+      this.config && this.config.output && this.config.output.prefix
+        ? this.config.output.prefix
+        : defaultFormat;
     targetOutputKeys.forEach(entry => {
       let key = entry;
       let obj = outputs;
       if (isObject(entry)) {
-        key = Object.keys(entry)[0];
+        key = targetPrefix + Object.keys(entry)[0];
         obj = entry;
       }
       targetOutputs[key] = obj[key];
@@ -114,16 +118,7 @@ class ServerlessExportOutputs {
       this.config && this.config.output && this.config.output.format
         ? this.config.output.format
         : defaultFormat;
-    const targetPrefix =
-      this.config && this.config.output && this.config.output.prefix
-        ? this.config.output.prefix
-        : defaultFormat;
     let formattedOutputs = null;
-    
-    console.log(`Outputs: ${JSON.stringify(outputs)}`);
-    console.log(`Prefix: ${targetPrefix}`);
-//     outputs[key] = outputs[key].map(i => targetPrefix + i)
-//     console.log(`Output: ${outputs[key]}`);
 
     switch (targetFormat.toLowerCase()) {
       case 'toml':
