@@ -120,7 +120,7 @@ class ServerlessExportOutputs {
         : defaultFormat;
     let formattedOutputs = null;
     
-    console.log(`Outputs: ${outputs}`);
+    console.log(`Outputs: ${JSON.stringify(outputs)}`);
     console.log(`Prefix: ${targetPrefix}`);
 //     outputs[key] = outputs[key].map(i => targetPrefix + i)
 //     console.log(`Output: ${outputs[key]}`);
