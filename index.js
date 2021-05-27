@@ -89,8 +89,7 @@ class ServerlessExportOutputs {
         key = Object.keys(entry)[0];
         obj = entry;
       }
-      console.log(`key: ${key}`)
-      targetOutputs[key] = obj[key];
+      targetOutputs[targetPrefix+key] = obj[key];
     });
 
     return targetOutputs;
