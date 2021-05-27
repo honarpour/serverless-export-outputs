@@ -120,8 +120,10 @@ class ServerlessExportOutputs {
         : defaultFormat;
     let formattedOutputs = null;
     
-    outputs[key] = outputs[key].map(i => targetPrefix + i)
-    console.log(`Output${outputs[key]}`);
+    console.log(`Outputs: ${outputs}`);
+    console.log(`Prefix: ${targetPrefix}`);
+//     outputs[key] = outputs[key].map(i => targetPrefix + i)
+//     console.log(`Output: ${outputs[key]}`);
 
     switch (targetFormat.toLowerCase()) {
       case 'toml':
