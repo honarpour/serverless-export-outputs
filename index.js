@@ -76,7 +76,12 @@ class ServerlessExportOutputs {
       ? this.config
       : this.config.include || [];
     const targetOutputs = {};
-
+    
+    const targetPrefix =
+      this.config && this.config.output && this.config.output.prefix
+        ? this.config.output.prefix
+        : "";
+    
     targetOutputKeys.forEach(entry => {
       let key = entry;
       let obj = outputs;
@@ -84,7 +89,7 @@ class ServerlessExportOutputs {
         key = Object.keys(entry)[0];
         obj = entry;
       }
-      targetOutputs[key] = obj[key];
+      targetOutputs[targetPrefix+key] = obj[key];
     });
 
     return targetOutputs;
