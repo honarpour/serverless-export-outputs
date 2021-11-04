@@ -74,7 +74,7 @@ class ServerlessExportOutputs {
 
     const targetOutputKeys = isArray(this.config)
       ? this.config
-      : this.config.include || [];
+      : this.config.include || Object.keys(outputs);
     const targetOutputs = {};
 
     targetOutputKeys.forEach(entry => {
