@@ -1,6 +1,6 @@
 {
   "name": "serverless-export-outputs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Serverless plugin for exporting AWS stack outputs to a file.",
   "license": "MIT",
   "author": {
